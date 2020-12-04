@@ -81,6 +81,21 @@ namespace Puzzles
         }
 
         // ***** Name
+
+        public static bool isUnique(object[] someArray, int vall)
+        {
+            bool True = true;
+            int i = 0;
+            while(True && i < someArray.Length)
+            {
+                if(someArray[i] == (object)vall)
+                {
+                    return True = false;
+                }
+                i++;
+            }
+            return True;
+        }
         public static List<string> Names()
         {
             List<string> names = new List<string>()
@@ -92,16 +107,25 @@ namespace Puzzles
                 "Sydney"
             };
             Random rand = new Random();
-            int individuals = rand.Next(names.Count);
-            for(int i = 0; i < names.Count; i++)
+            object[] newArr = new object[5]
             {
-                Console.WriteLine(names[i]);
-                if(names[i].Length < 5)
+                -1,-1,-1,-1,-1
+            };
+            int i = 0;
+            while(i < names.Count)
+            {
+                int individuals = rand.Next(0,5);
+                if(isUnique(newArr, individuals))
                 {
-                    names.Remove(names[i]);
+                    Console.WriteLine(individuals);
+                    newArr[i] = individuals;
+                    if(names[i].Length < 5)
+                    {
+                        names.Remove(names[i]);
+                    }
+                    i++;
                 }
             }
-            Console.WriteLine(names);
             foreach(string n in names)
             {
                 Console.WriteLine(n);
