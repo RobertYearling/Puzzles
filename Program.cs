@@ -82,13 +82,13 @@ namespace Puzzles
 
         // ***** Name
 
-        public static bool isUnique(object[] someArray, int vall)
+        public static bool isUnique(int[] someArray, int vall)
         {
             bool True = true;
             int i = 0;
             while(True && i < someArray.Length)
             {
-                if(someArray[i] == (object)vall)
+                if(someArray[i] == vall)
                 {
                     return True = false;
                 }
@@ -107,12 +107,13 @@ namespace Puzzles
                 "Sydney"
             };
             Random rand = new Random();
-            object[] newArr = new object[5]
+            int[] newArr = new int[5]
             {
                 -1,-1,-1,-1,-1
             };
             int i = 0;
-            while(i < names.Count)
+            int x = 0;
+            while(x <= names.Count)
             {
                 int individuals = rand.Next(0,5);
                 if(isUnique(newArr, individuals))
@@ -122,8 +123,9 @@ namespace Puzzles
                     if(names[i].Length < 5)
                     {
                         names.Remove(names[i]);
+                        i++;
                     }
-                    i++;
+                    x++;
                 }
             }
             foreach(string n in names)
